@@ -78,15 +78,16 @@ def run_agent(topic: str, draft: str, keywords: list[str], verbose: bool = True)
             "delta": result["delta"],
             "done_reason": result["done_reason"],
         })
+        print("START")
 
         if verbose:
-            print(f"Step {result['state']['step']} | {best_action}")
+            print(f"STEP {result['state']['step']}: {best_action}")
             print(f"Reward: {result['reward']} (Δ {result['delta']:+.4f})\n")
 
         if result["done"]:
             done_reason = result["done_reason"]
             break
-
+    print("END")
     return {
         "topic": topic,
         "original_draft": draft,
